@@ -1,9 +1,9 @@
 ---
-name: tiered-agent-orchestrator
+name: three-tier-agent-symphony
 description: "Have the main thread perform the GPT-5.6 Sol lead-orchestrator role, delegate difficult but clearly bounded work to GPT-5.6 Terra Max, and assign clear, repeatable work to GPT-5.6 Luna Max. Use when the user requests Sol orchestration, Terra Max or Luna Max subagents, tiered multi-agent coding, parallel code review, module analysis, independent feature implementation, testing, debugging, or result integration. Do not infer or require switching the main model; before delegation, check only the required subagent model and reasoning combinations."
 ---
 
-# Tiered Agent Orchestration
+# Three-Tier Agent Symphony
 
 Have the current main thread perform Sol's orchestration role: understand the objective, break down tasks, make architectural decisions, verify completion, and integrate results. Delegate difficult but clearly bounded work to Terra Max, and clear, repeatable, easily verifiable work to Luna Max.
 

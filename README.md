@@ -1,4 +1,4 @@
-# Tiered Agent Orchestrator
+# Three-Tier Agent Symphony
 
 A Codex skill that has the current main thread perform the Sol lead-orchestrator role while delegating independent subtasks to Terra Max and Luna Max based on the nature of the work.
 
@@ -31,7 +31,7 @@ Whether Max appears in the Codex App model picker is not the capability check. E
 Run the following on macOS or Linux:
 
 ```bash
-git clone https://github.com/irons163/tiered-agent-orchestrator.git "${CODEX_HOME:-$HOME/.codex}/skills/tiered-agent-orchestrator"
+git clone https://github.com/irons163/three-tier-agent-symphony.git "${CODEX_HOME:-$HOME/.codex}/skills/three-tier-agent-symphony"
 ```
 
 If the current task does not reload the skill, create a new task. If it still does not appear, restart the Codex App.
@@ -41,13 +41,13 @@ If the current task does not reload the skill, create a new task. If it still do
 Explicitly enable the skill in a Codex prompt:
 
 ```text
-$tiered-agent-orchestrator
+$three-tier-agent-symphony
 ```
 
 You can also describe the work directly, for example:
 
 ```text
-Use the Tiered Agent Orchestrator to review this project: the main thread handles integration, Terra Max performs the architecture and security review, and Luna Max runs tests and organizes the errors.
+Use the Three-Tier Agent Symphony to review this project: the main thread handles integration, Terra Max performs the architecture and security review, and Luna Max runs tests and organizes the errors.
 ```
 
 ## Repository structure
