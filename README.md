@@ -17,6 +17,7 @@ A Codex skill that has the current main thread perform the Astra lead-orchestrat
 - If either required subagent model or reasoning capability is unavailable, stop completely instead of substituting another model or using a lower reasoning level.
 - Launch Sol Medium and Luna Max by passing the exact model and reasoning values directly to the subagent tool.
 - Choose the subagent model and reasoning effort first, then derive the task-name suffix from those exact values: `_sol_medium` or `_luna_max`.
+- Use `fork_turns: "none"` for Luna Max and by default for Sol Medium. Sol Medium may use `"2"` only when its task directly depends on the latest conversation; never omit the field or use `"all"`.
 - Once all capabilities are available, delegate subtasks with explicit objectives, scope, completion criteria, and validation methods.
 - The main thread reviews important diffs, tests, and evidence, and is responsible for the final integration.
 

@@ -19,7 +19,9 @@ Before actual delegation, check the subagent capabilities exposed by the current
 2. If the tool declares support but an actual launch is rejected because of model or reasoning incompatibility, treat that capability as unavailable.
 3. Proceed to Section 2 only after confirming that Sol Medium and Luna Max are available.
 
-Every time Sol Medium or Luna Max is launched, pass the corresponding `model` and `reasoning_effort` values directly to the subagent tool. Do not depend on a custom agent configuration file. Do not use the App's reasoning visibility in the model picker as a capability check; use the subagent tool declarations and actual launch results.
+Every time Sol Medium or Luna Max is launched, pass the corresponding `model` and `reasoning_effort` values directly to the subagent tool. Set `fork_turns = "none"` for Luna Max. Set `fork_turns = "none"` for Sol Medium by default; use `fork_turns = "2"` only when its task directly depends on the latest conversation and restating that context would reduce clarity. Never omit `fork_turns`, and never use `fork_turns = "all"`.
+
+The subagent prompt remains the authoritative task context. Do not depend on a custom agent configuration file or inherited conversation history. Do not use the App's reasoning visibility in the model picker as a capability check; use the subagent tool declarations and actual launch results.
 
 ### Any required capability is unavailable: complete hard stop
 
@@ -65,6 +67,12 @@ Choose the subagent's `model` and `reasoning_effort` first, then derive the `tas
 | `gpt-5.6-luna` | `max` | `_luna_max` | `sdk_docs_luna_max` |
 
 Before launching the subagent, compare the suffix with the `model` and `reasoning_effort` fields. Do not launch a call whose suffix does not match. Use underscores because `task_name` accepts lowercase letters, digits, and underscores. The explicit model and reasoning fields remain authoritative.
+
+Also verify `fork_turns` before launch:
+
+- Luna Max must use `"none"`.
+- Sol Medium should use `"none"`; it may use `"2"` only for a task that directly depends on the latest conversation.
+- A call with an omitted value or `"all"` must not be launched.
 
 Every subagent prompt must include:
 
