@@ -1,4 +1,4 @@
 interface:
-  display_name: "Sol–Terra–Luna Symphony"
+  display_name: "Tiered Agent Orchestrator"
   short_description: "Route work from the main thread to Terra and Luna"
-  default_prompt: "Use $sol-terra-luna-symphony to coordinate this coding task from the main thread with Terra Max and Luna Max."
+  default_prompt: "Use $tiered-agent-orchestrator to coordinate this coding task from the main thread with Terra Max and Luna Max."
