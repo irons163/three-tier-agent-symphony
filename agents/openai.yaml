@@ -1,4 +1,4 @@
 interface:
   display_name: "Three-Tier Agent Symphony"
-  short_description: "Route work from the main thread to Terra and Luna"
-  default_prompt: "Use $three-tier-agent-symphony to coordinate this coding task from the main thread with Terra Max and Luna Max."
+  short_description: "Route work from Astra to Sol and Luna"
+  default_prompt: "Use $three-tier-agent-symphony to coordinate this coding task with Astra leading Sol Medium and Luna Max."
