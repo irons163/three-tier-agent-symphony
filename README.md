@@ -1,29 +1,30 @@
 # Sol–Terra–Luna Symphony
 
-A Codex skill that keeps GPT-5.6 Sol in the main thread as the lead orchestrator, while delegating independent subtasks to Terra Max and Luna Max based on the nature of the work.
+A Codex skill that has the current main thread perform the Sol lead-orchestrator role while delegating independent subtasks to Terra Max and Luna Max based on the nature of the work.
 
 ## Role assignments
 
 | Role | Responsibilities |
 | --- | --- |
-| GPT-5.6 Sol | Understand the objective, break down tasks, make architectural decisions, review results, and integrate the final output |
+| Main thread in the Sol lead role | Understand the objective, break down tasks, make architectural decisions, review results, and integrate the final output |
 | GPT-5.6 Terra Max | Handle difficult but clearly bounded analysis and implementation, in-depth code review, and complex debugging |
 | GPT-5.6 Luna Max | Perform clear, repeatable, and easily verifiable searches, tests, reproductions, mechanical edits, and summarization |
 
 ## Core behavior
 
-- Verify that Sol, Terra Max, and Luna Max are available before starting substantive work.
-- If any required model or Max reasoning capability is unavailable, stop completely instead of substituting another model or using a lower reasoning level.
+- Do not infer, verify, or require a particular model for the main thread; it directly performs the Sol lead role.
+- Verify that Terra Max and Luna Max are available before starting substantive work.
+- If either required subagent model or Max reasoning capability is unavailable, stop completely instead of substituting another model or using a lower reasoning level.
+- Launch Terra Max and Luna Max by passing the exact model and reasoning values directly to the subagent tool.
 - Once all capabilities are available, delegate subtasks with explicit objectives, scope, completion criteria, and validation methods.
-- Sol reviews important diffs, tests, and evidence, and is responsible for the final integration.
+- The main thread reviews important diffs, tests, and evidence, and is responsible for the final integration.
 
 ## Requirements
 
-- Codex supports skills, custom agents, and subagents.
-- The main thread can use `gpt-5.6-sol`.
+- Codex supports skills and subagents.
 - Subagents can use `gpt-5.6-terra` and `gpt-5.6-luna`, and both support `max` reasoning effort.
 
-Whether Max is selected in the Codex App model picker only affects whether the option is displayed in the composer. It does not affect the explicit `model_reasoning_effort = "max"` setting in custom agent files. The actual subagent startup result is the criterion for determining whether the capability is available.
+Whether Max appears in the Codex App model picker is not the capability check. Each subagent launch directly passes `model` and `reasoning_effort`; the tool declaration and actual startup result determine whether the combination is available.
 
 ## Installation
 
@@ -46,19 +47,7 @@ $sol-terra-luna-symphony
 You can also describe the work directly, for example:
 
 ```text
-Use the Sol–Terra–Luna Symphony to review this project: Sol handles integration, Terra Max performs the architecture and security review, and Luna Max runs tests and organizes the errors.
-```
-
-If Luna Max has not been configured, you can ask:
-
-```text
-Please help me configure Luna Max.
-```
-
-After configuration, if the current task has not reloaded the agent capabilities yet, you can ask:
-
-```text
-Please duplicate the current task and test Luna Max.
+Use the Sol–Terra–Luna Symphony to review this project: the main thread handles integration, Terra Max performs the architecture and security review, and Luna Max runs tests and organizes the errors.
 ```
 
 ## Repository structure
@@ -70,5 +59,3 @@ Please duplicate the current task and test Luna Max.
 └── agents/
     └── openai.yaml
 ```
-
-Personal `luna-max.toml` and `terra-max.toml` files are not included in the repository. The skill provides instructions for creating and validating them based on the user's environment.
