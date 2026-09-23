@@ -1,6 +1,6 @@
 ---
 name: three-tier-agent-symphony
-description: "Have the main thread perform the GPT-6 Astra lead-orchestrator role, delegate difficult but clearly bounded work to GPT-5.6 Sol Medium, and assign clear, repeatable work to GPT-5.6 Luna Max. Use when the user requests Astra orchestration, Sol Medium or Luna Max subagents, tiered multi-agent coding, parallel code review, module analysis, independent feature implementation, testing, debugging, or result integration. Do not infer or require switching the main model; before delegation, check only the required subagent model and reasoning combinations."
+description: "Have the main thread perform the GPT-6 Astra lead-orchestrator role, delegate difficult but clearly bounded work to GPT-5.6 Sol Medium, and assign clear, repeatable work to GPT-6 Luna Max. Use when the user requests Astra orchestration, Sol Medium or Luna Max subagents, tiered multi-agent coding, parallel code review, module analysis, independent feature implementation, testing, debugging, or result integration. Do not infer or require switching the main model; before delegation, check only the required subagent model and reasoning combinations."
 ---
 
 # Three-Tier Agent Symphony
@@ -15,7 +15,7 @@ Before actual delegation, check the subagent capabilities exposed by the current
 
 1. Confirm that the subagent tool can directly specify these combinations:
    - Sol Medium: `model = "gpt-5.6-sol"`, `reasoning_effort = "medium"`.
-   - Luna Max: `model = "gpt-5.6-luna"`, `reasoning_effort = "max"`.
+   - Luna Max: `model = "gpt-6-luna"`, `reasoning_effort = "max"`.
 2. If the tool declares support but an actual launch is rejected because of model or reasoning incompatibility, treat that capability as unavailable.
 3. Proceed to Section 2 only after confirming that Sol Medium and Luna Max are available.
 
@@ -41,7 +41,7 @@ The only permitted setup exception: if the user explicitly asks the AI to help e
 State precisely which model or reasoning combination is missing, then ask the user to confirm the model and reasoning controls in the Codex App:
 
 - Sol Medium requires `gpt-5.6-sol` with `medium`.
-- Luna Max requires `gpt-5.6-luna` with `max`.
+- Luna Max requires `gpt-6-luna` with `max`.
 
 If an option is absent, ask the user to check their account plan, workspace administrator model policies, and current provider. The skill cannot unlock an unavailable model. Maintain the hard stop until every required combination is available.
 
@@ -64,7 +64,7 @@ Choose the subagent's `model` and `reasoning_effort` first, then derive the `tas
 | `model` | `reasoning_effort` | Required suffix | Example |
 | --- | --- | --- | --- |
 | `gpt-5.6-sol` | `medium` | `_sol_medium` | `security_review_sol_medium` |
-| `gpt-5.6-luna` | `max` | `_luna_max` | `sdk_docs_luna_max` |
+| `gpt-6-luna` | `max` | `_luna_max` | `sdk_docs_luna_max` |
 
 Before launching the subagent, compare the suffix with the `model` and `reasoning_effort` fields. Do not launch a call whose suffix does not match. Use underscores because `task_name` accepts lowercase letters, digits, and underscores. The explicit model and reasoning fields remain authoritative.
 

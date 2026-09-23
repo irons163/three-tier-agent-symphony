@@ -8,7 +8,7 @@ A Codex skill that has the current main thread perform the Astra lead-orchestrat
 | --- | --- |
 | Main thread in the GPT-6 Astra lead role | Understand the objective, break down tasks, make architectural decisions, review results, and integrate the final output |
 | GPT-5.6 Sol Medium | Handle difficult but clearly bounded analysis and implementation, in-depth code review, and complex debugging |
-| GPT-5.6 Luna Max | Perform clear, repeatable, and easily verifiable searches, tests, reproductions, mechanical edits, and summarization |
+| GPT-6 Luna Max | Perform clear, repeatable, and easily verifiable searches, tests, reproductions, mechanical edits, and summarization |
 
 ## Core behavior
 
@@ -24,11 +24,11 @@ A Codex skill that has the current main thread perform the Astra lead-orchestrat
 ## Requirements
 
 - Codex supports skills and subagents.
-- Subagents can use `gpt-5.6-sol` with `medium` reasoning and `gpt-5.6-luna` with `max` reasoning.
+- Subagents can use `gpt-5.6-sol` with `medium` reasoning and `gpt-6-luna` with `max` reasoning.
 
 Whether a reasoning level appears in the Codex App model picker is not the capability check. Each subagent launch directly passes `model` and `reasoning_effort`; the tool declaration and actual startup result determine whether the combination is available.
 
-The task-name suffix is a visible label derived from the actual launch arguments. Use `security_review_sol_medium` for `gpt-5.6-sol` with `medium`, and `sdk_docs_luna_max` for `gpt-5.6-luna` with `max`. The skill requires checking this mapping before launch and forbids launching a mismatched name. The explicit model and reasoning arguments remain authoritative.
+The task-name suffix is a visible label derived from the actual launch arguments. Use `security_review_sol_medium` for `gpt-5.6-sol` with `medium`, and `sdk_docs_luna_max` for `gpt-6-luna` with `max`. The skill requires checking this mapping before launch and forbids launching a mismatched name. The explicit model and reasoning arguments remain authoritative.
 
 ## Installation
 
